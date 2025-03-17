@@ -60,6 +60,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     int gravity = 1;
 
     ArrayList<Pipe> pipes;
+    Random random = new Random();
 
 
     Timer gameLoop;
@@ -96,7 +97,14 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     }
 
     public void placePipes() {
+        // (0 -> 1) * pipeHeight /2 = (0 -> 256)
+        // pipeY/4 = 128
+        // 0 - 128 - (0 -> 256) -> Range from 1/4 to 3/4 of the pipe height
+
+
+        int randomPipeY = (int) (pipeY - pipeHeight/4 - Math.random()*pipeHeight/2);
         Pipe topPipe = new Pipe(topPipeImg);
+        topPipe.y = randomPipeY;
         pipes.add(topPipe);
     }
 
