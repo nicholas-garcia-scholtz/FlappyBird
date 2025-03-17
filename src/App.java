@@ -16,6 +16,7 @@ public class App {
         FlappyBird flappyBird = new FlappyBird();
         frame.add(flappyBird); // adding the canvas to the frame
         frame.pack();
+        flappyBird.requestFocus();
         frame.setVisible(true);
         
 
