@@ -4,7 +4,7 @@ import java.util.ArrayList; // going to store all the pipes
 import java.util.Random; // to place pipes at random positions
 import javax.swing.*;
 
-public class FlappyBird extends JPanel{
+public class FlappyBird extends JPanel implements ActionListener{
 
     int boardWidth = 360;
     int boardHeight = 640;
@@ -37,6 +37,11 @@ public class FlappyBird extends JPanel{
     //game logic
     Bird bird;
 
+    Timer gameLoop;
+
+
+
+
     FlappyBird() {
         setPreferredSize(new Dimension(boardWidth, boardHeight)); //create canvas
         // setBackground(Color.blue);
@@ -47,8 +52,12 @@ public class FlappyBird extends JPanel{
         topPipeImg = new ImageIcon(getClass().getResource("./toppipe.png")).getImage();
         bottomPipeImg = new ImageIcon(getClass().getResource("./bottompipe.png")).getImage();
 
-        // Bird
+        // bird
         bird = new Bird(birdImg);
+
+        // game timer
+        gameLoop = new Timer(1000/60, this); //60 frames per second (1000ms / 60 = 16.6 ms per frame)
+        gameLoop.start();
     }
 
     public void paintComponent(Graphics g){
@@ -62,6 +71,11 @@ public class FlappyBird extends JPanel{
 
         // bird
         g.drawImage(bird.img, bird.x, bird.y, bird.width, birdHeight, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint(); // calls paintComponent
     }
 
     
