@@ -1,11 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList; // going to store all the pipes
-import java.util.Random; // to place pipes at random positions
+import java.util.List;
+import java.util.ArrayList; 
+import java.util.Random; 
 import javax.swing.*;
 
 public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
+    // Dimensions
     int boardWidth = 360;
     int boardHeight = 640;
 
@@ -53,13 +55,13 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         }
     }
 
-    //game logic
+    //Game logic
     Bird bird;
     int velocityX = -4; // speed to move the pipes to the left (relatively makes it seem like the bird is moving right)
     int velocityY = 0; 
     int gravity = 1;
 
-    ArrayList<Pipe> pipes;
+    List<Pipe> pipes;
     Random random = new Random();
 
 
@@ -80,7 +82,6 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         topPipeImg = new ImageIcon(getClass().getResource("./toppipe.png")).getImage();
         bottomPipeImg = new ImageIcon(getClass().getResource("./bottompipe.png")).getImage();
 
-        // bird
         bird = new Bird(birdImg);
         pipes = new ArrayList<Pipe>();
 
